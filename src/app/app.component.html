@@ -16,79 +16,17 @@
 <div style="background-color: black; height: 100%;">
   <mat-tab-group mat-align-tabs="center">
     <mat-tab label="Patients">
-      <div style="margin-top: 2em;"></div>
-      <mat-accordion>
-        <mat-expansion-panel *ngFor="let patient of patients">
-          <mat-expansion-panel-header>
-            <mat-panel-title>
-              #{{patient.id}}
-            </mat-panel-title>
-            <mat-panel-description>
-              {{patient.name}} {{patient.lastname}}
-            </mat-panel-description>
-          </mat-expansion-panel-header>
-          <div>
-            patient description
-          </div>
-        </mat-expansion-panel>
-      </mat-accordion>
-
+      <app-patients></app-patients>
     </mat-tab>
     <mat-tab label="Hospital Staff">
-      <div style="margin-top: 2em;"></div>
-      <mat-accordion>
-        <mat-expansion-panel *ngFor="let doc of staff">
-          <mat-expansion-panel-header>
-            <mat-panel-title>
-              #{{doc.id}}
-            </mat-panel-title>
-            <mat-panel-description>
-              {{doc.name}} {{doc.lastname}}
-            </mat-panel-description>
-          </mat-expansion-panel-header>
-          <div>
-            doc description
-          </div>
-        </mat-expansion-panel>
-      </mat-accordion>
-
+      <app-medstaff></app-medstaff>
     </mat-tab>
     <mat-tab label="Resources">
-      <div style="margin-top: 2em;"></div>
-      <mat-accordion>
-        <mat-expansion-panel *ngFor="let resource of resources">
-          <mat-expansion-panel-header>
-            <mat-panel-title>
-              #{{resource.id}}
-            </mat-panel-title>
-            <mat-panel-description>
-              {{resource.name}} {{resource.lastname}}
-            </mat-panel-description>
-          </mat-expansion-panel-header>
-          <div>
-            resource description
-          </div>
-        </mat-expansion-panel>
-      </mat-accordion>
-
+      <app-resources></app-resources>
     </mat-tab>
-    <mat-tab label="Stats">Stats</mat-tab>
+    <mat-tab label="Stats">
+      <app-statistics></app-statistics>
+    </mat-tab>
   </mat-tab-group>
 </div>
-
-
-
-
-
-
-<!-- Terminal -->
-<!-- <div class="terminal" >
-    <pre *ngSwitchDefault>ng generate component xyz</pre>
-    <pre *ngSwitchCase="'material'">ng add @angular/material</pre>
-    <pre *ngSwitchCase="'pwa'">ng add @angular/pwa</pre>
-    <pre *ngSwitchCase="'dependency'">ng add _____</pre>
-    <pre *ngSwitchCase="'test'">ng test</pre>
-    <pre *ngSwitchCase="'build'">ng build --prod</pre>
-</div> -->
-
 <router-outlet></router-outlet>

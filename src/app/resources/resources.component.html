@@ -1,0 +1,16 @@
+<div style="margin-top: 2em;"></div>
+<mat-accordion>
+  <mat-expansion-panel *ngFor="let resource of resources">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        #{{resource.id}}
+      </mat-panel-title>
+      <mat-panel-description>
+        {{resource.name}} {{resource.lastname}}
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <div>
+      resource description
+    </div>
+  </mat-expansion-panel>
+</mat-accordion>

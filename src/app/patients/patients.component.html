@@ -1,0 +1,89 @@
+
+<div style="margin-bottom: 2em;margin-top: 2em;" *ngIf="!loading">
+    <button mat-fab color="primary" style="display: block; margin: auto;" (click)="toggleStepper()">
+        <mat-icon>add</mat-icon>
+    </button>
+</div>
+
+
+<div style="margin-bottom: 2em;margin-top: 2em;" *ngIf="!loading">
+    <button mat-raised-button color="primary" style="display: block; margin: auto;" (click)="deleteAllPatients()">
+        Delete All Patients
+    </button>
+</div>
+
+<div style="margin-bottom: 2em;margin-top: 2em;">
+    <mat-spinner *ngIf="loading" style="display: block; margin: auto;"></mat-spinner>
+</div>
+
+
+<mat-horizontal-stepper linear #stepper style="margin-bottom: 2em;" *ngIf="showStepper">
+
+    <mat-step [stepControl]="firstFormGroup" [editable]="isEditable">
+        <form [formGroup]="firstFormGroup">
+            <ng-template matStepLabel>Fill out the patient's first name</ng-template>
+            <mat-form-field>
+                <mat-label style="margin: 1em;">Name</mat-label>
+                <input matInput formControlName="firstCtrl" placeholder="First name" required>
+            </mat-form-field>
+            <div style="margin: 1em;">
+                <button mat-raised-button matStepperNext color="primary">Next</button>
+            </div>
+        </form>
+    </mat-step>
+
+    <mat-step [stepControl]="secondFormGroup" [editable]="isEditable">
+        <form [formGroup]="secondFormGroup">
+            <ng-template matStepLabel>Fill out patient's last name</ng-template>
+            <mat-form-field>
+                <mat-label>Address</mat-label>
+                <input matInput formControlName="secondCtrl" placeholder="Last name" required>
+            </mat-form-field>
+            <div style="margin: 1em;">
+                <button mat-raised-button matStepperPrevious color="primary">Back</button>
+                <button mat-raised-button matStepperNext color="primary">Next</button>
+            </div>
+        </form>
+    </mat-step>
+    <mat-step>
+
+        <ng-template matStepLabel>Done</ng-template>
+        <p>You are now done.</p>
+        <div style="margin: 1em;">
+            <button mat-raised-button matStepperPrevious color="primary">Back</button>
+            <button mat-raised-button (click)="addPatient(); stepper.reset()" color="primary">Add Patient</button>
+        </div>
+    </mat-step>
+</mat-horizontal-stepper>
+
+
+<mat-accordion *ngIf="!loading" style="margin-bottom: 2em;">
+    <mat-expansion-panel *ngFor="let patient of patients">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                #{{patient.id}}
+            </mat-panel-title>
+            <mat-panel-description>
+                {{patient.firstname}} {{patient.lastname}}
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        <div 
+        style=
+        "display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        align-items: center;
+        align-content: stretch;">
+            <div>
+                patient description
+            </div>
+            <div>
+                <button mat-raised-button color="accent" (click)="deletePatient(patient.id)">
+                    Delete
+                </button>
+            </div>
+
+        </div>
+    </mat-expansion-panel>
+</mat-accordion>
